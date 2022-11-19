@@ -1,0 +1,57 @@
+<html>
+<meta http-equiv="refresh" content="7">
+
+<head>
+<title>FOREST FIRE MONITORING SYSTEM </title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+
+<script>
+
+    $(function() {
+
+
+   var people = [];
+
+   $.getJSON('  https://api.thingspeak.com/channels/991316/feeds.json?results=1', function(data) {
+       $.each(data.feeds, function(i, f) {
+          var tblRow = "<tr>" + "<td>" + f.created_at + "</td>" +"<td>" + f.entry_id + "</td>" + "<td>" + f.field3 + "</td>"+ "<td>"+f.field4 + "</td>"+"</tr>"
+
+           $(tblRow).appendTo("#userdata tbody");
+     });
+
+   });
+
+});
+</script>
+
+</head>
+<body style="background-color:powderblue;">
+<br><br><br><br><br><br><br><br>
+<center style="color:blue">
+<h1>FOREST FIRE MONITORING SYSTEM </h1>
+
+</center><br>
+<center>
+
+
+  <table id= "userdata" border="2">
+  <thead>
+            <th>Date</th>
+            <th>S.no</th>
+            <th>LOCATION</th>
+	
+            <th>STATUS</th>
+             </thead>
+    <tbody>
+    </tbody>
+   </table>
+<br><br>
+<button onclick="location.href='https://www.dropbox.com/sh/1wph9fg8a0wxs13/AAAo1I8IaF5mflHNzEgmK6g_a?dl=0'" type="button">
+         CLICK HERE TO VIEW DATABASE</button>
+
+<iframe id='track' frameborder="0" scrolling="no" width="1" height="1">
+</script>
+
+</center>
+</body>
+</html>
